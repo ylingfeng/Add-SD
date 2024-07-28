@@ -1,0 +1,9 @@
+_BASE_: "../LVIS_Base-C2_L_R5021k_640b64_4x.yaml"
+DATASETS:
+  TRAIN: ("lvis_v1_train", "addsd_gen_lvis_single_coco-lvis-vg-vgcut_seed0_r")
+  TRAIN_REPEAT_FACTOR: (("lvis_v1_train", 0.8), ("addsd_gen_lvis_single_coco-lvis-vg-vgcut_seed0_r", 0.2))
+DATALOADER:
+  SAMPLER_TRAIN: "WeightedCategoryTrainingSampler"
+  BATCH_SAMPLING: True
+MODEL:
+  WEIGHTS: "../pretrained/resnet50_miil_21k.pkl"
