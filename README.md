@@ -65,12 +65,12 @@ sh script/remove_anything_with_GTbox.sh ### containing both COCO and LVIS
 ```
 1_AddSD/data/
   ├── json/
-  	├── seeds_coco_vanilla.json
+   ├── seeds_coco_multi_vanilla.json
    ├── seeds_coco_multi_vanilla.json
    ├── seeds_lvis_vanilla.json
    ├── seeds_lvis_multi_vanilla.json
    ├── seeds_vg_vanilla.json
-  	└── seeds_vgcut_vanilla.json
+   └── seeds_vgcut_vanilla.json
 ```
 
 4) (Optional) If you want to make your own datasets, conduct the following steps:
