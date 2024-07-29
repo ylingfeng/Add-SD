@@ -69,6 +69,7 @@ sh script/remove_anything_with_GTbox.sh ### containing both COCO and LVIS
    ├── seeds_coco_multi_vanilla.json
    ├── seeds_lvis_vanilla.json
    ├── seeds_lvis_multi_vanilla.json
+   ├── seeds_refcoco_vanilla.json
    ├── seeds_vg_vanilla.json
    └── seeds_vgcut_vanilla.json
 ```
