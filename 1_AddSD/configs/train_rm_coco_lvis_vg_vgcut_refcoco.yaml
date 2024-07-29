@@ -85,7 +85,7 @@ data:
       target: edit_dataset_rm.EditDataset
       params:
         path: data
-        keys: coco_multi,lvis_multi,vg,vgcut
+        keys: coco_multi,lvis_multi,vg,vgcut,refcoco
         split: train
         min_resize_res: 256
         max_resize_res: 256
@@ -95,7 +95,7 @@ data:
       target: edit_dataset_rm.EditDataset
       params:
         path: data
-        keys: coco_multi,lvis_multi,vg,vgcut
+        keys: coco_multi,lvis_multi,vg,vgcut,refcoco
         split: val
         min_resize_res: 256
         max_resize_res: 256

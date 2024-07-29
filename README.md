@@ -69,6 +69,7 @@ sh script/remove_anything_with_GTbox.sh ### containing both COCO and LVIS
      ├── seeds_coco_multi_vanilla.json
      ├── seeds_lvis_vanilla.json
      ├── seeds_lvis_multi_vanilla.json
+     ├── seeds_refcoco_vanilla.json
      ├── seeds_vg_vanilla.json
      └── seeds_vgcut_vanilla.json
 ```
@@ -87,7 +88,7 @@ cd 1_AddSD
 python run_train.sh
 ```
 
-Make sure place the datasets, such as COCO, LVIS, VG, and VGCUT, in the data directory with the following structure:
+Make sure place the datasets, such as COCO, LVIS, VG, VGCUT, RefCOCO, RefCOCO+, and RefCOCOg, in the data directory with the following structure:
 
 ```
 1_AddSD/data/
@@ -104,6 +105,14 @@ Make sure place the datasets, such as COCO, LVIS, VG, and VGCUT, in the data dir
   ├── lvis/
      ├── lvis_v1_train.json
      └── lvis_v1_val.json
+  ├── refcoco/
+     ├── refcoco/
+     	└── instances.json
+     ├── refcoco+/
+     	└── instances.json
+     ├── refcocog/
+     	└── instances.json
+  ├── refcoco_remove/
   ├── vg/
      ├── images/
      ├── metas/
@@ -128,6 +137,30 @@ Run the dataset generation script:
 cd 1_AddSD
 sh utils/gen_datasets.sh
 ```
+
+Here are examples of generation on COCO and LVIS datasets.
+
+**COCO object generation**
+
+```shell
+python edit_cli_datasets.py --config configs/generate.yaml \
+-n $NNODES -nr $NODE_RANK --addr $ADDR --port $PORT --input $INPUT --output $OUTPUT --ckpt $MODEL --seed $SEED \
+```
+
+- By default, use super-label-based sampling strategy to restrict the category of the added object. If do not use it, please add ```--no_superlabel``` parameter.
+
+- By default, generate single object. If want to generate multiple objects, please add ```--multi``` parameter.
+
+**LVIS object generation**
+
+```shell
+python edit_cli_datasets.py --config configs/generate.yaml -n $NNODES -nr $NODE_RANK --addr $ADDR --port $PORT --input $INPUT --output $OUTPUT --ckpt $MODEL --seed $SEED \
+--is_lvis --lvis_label_selection r
+```
+
+- Need to add ```--is_lvis``` parameter to generate on LVIS dataset.
+
+- By default, add object with rare classes. If want to use common or frequent classes, please change ```--lvis_label_selection f c r``` parameter, where f, c, r represents frequent, common, rare class, respectively.
 
 ### Step 2: Postprocessing synthetic data to localize the added objects from Add-SD
 
