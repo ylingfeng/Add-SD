@@ -87,7 +87,7 @@ cd 1_AddSD
 python run_train.sh
 ```
 
-Make sure place the datasets, such as COCO, LVIS, VG, and VGCUT, in the data directory with the following structure:
+Make sure place the datasets, such as COCO, LVIS, VG, VGCUT, RefCOCO, RefCOCO+, and RefCOCOg, in the data directory with the following structure:
 
 ```
 1_AddSD/data/
@@ -104,6 +104,14 @@ Make sure place the datasets, such as COCO, LVIS, VG, and VGCUT, in the data dir
   ├── lvis/
      ├── lvis_v1_train.json
      └── lvis_v1_val.json
+  ├── refcoco/
+     ├── refcoco/
+     	└── instances.json
+     ├── refcoco+/
+     	└── instances.json
+     ├── refcocog/
+     	└── instances.json
+  ├── refcoco_remove/
   ├── vg/
      ├── images/
      ├── metas/
@@ -127,19 +135,6 @@ Run the dataset generation script:
 ```shell
 cd 1_AddSD
 sh utils/gen_datasets.sh
-```
-
-### Step 2: Postprocessing synthetic data to localize the added objects from Add-SD
-
-1) Follow the installation instructions in the [GroundingDINO](https://github.com/IDEA-Research/GroundingDINO) repository.
-
-2) Download pretrained model, [groundingdino_swinb_cogcoor.pth](https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha2/groundingdino_swinb_cogcoor.pth), in the ```pretrained``` directory.
-
-2) Navigate to the ```2_grounding_dino``` directory and run the inference script:
-
-```shell
-cd 2_grounding_dino
-sh run_infer_with_GT_for_AddSD.sh
 ```
 
 Here are examples of generation on COCO and LVIS datasets.
@@ -166,6 +161,18 @@ python edit_cli_datasets.py --config configs/generate.yaml -n $NNODES -nr $NODE_
 
 - By default, add object with rare classes. If want to use common or frequent classes, please change ```--lvis_label_selection f c r``` parameter, where f, c, r represents frequent, common, rare class, respectively.
 
+### Step 2: Postprocessing synthetic data to localize the added objects from Add-SD
+
+1) Follow the installation instructions in the [GroundingDINO](https://github.com/IDEA-Research/GroundingDINO) repository.
+
+2) Download pretrained model, [groundingdino_swinb_cogcoor.pth](https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha2/groundingdino_swinb_cogcoor.pth), in the ```pretrained``` directory.
+
+2) Navigate to the ```2_grounding_dino``` directory and run the inference script:
+
+```shell
+cd 2_grounding_dino
+sh run_infer_with_GT_for_AddSD.sh
+```
 
 ### Step 3: Train detectors with original data and synthetic data from Add-SD
 
