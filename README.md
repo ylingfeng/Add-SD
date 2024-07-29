@@ -9,9 +9,9 @@ This is the *official* repository with PyTorch implementation of [Add-SD: Ration
 - [1. Introduction](#1)
 - [2. Method](#2)
 - [3. Overall Pipeline](#3)
-- [4. Main Results](#7)
-- [5. References](#8)
-- [6. Citation](#9)
+- [4. Main Results](#4)
+- [5. References](#5)
+- [6. Citation](#6)
 
 <a name='1'></a>
 
@@ -32,7 +32,7 @@ Add-SD consists of three essential stages to complete the object addition task:
 <p align="center">
   <img src="assets/main_architecture.svg" alt="main_architecture.svg" style="width: 100%;"/>
   <br>
-  <span style="display: block; text-align: center; font-size: 14px; color: #555;">Main architecture of Add-SD</span>
+  <span style="display: block; text-align: center; font-size: 14px; color: #555;">Main architecture of Add-SD.</span>
 </p>
 
 
@@ -65,15 +65,15 @@ sh script/remove_anything_with_GTbox.sh ### containing both COCO and LVIS
 ```
 1_AddSD/data/
   ├── json/
-   ├── seeds_coco_multi_vanilla.json
-   ├── seeds_coco_multi_vanilla.json
-   ├── seeds_lvis_vanilla.json
-   ├── seeds_lvis_multi_vanilla.json
-   ├── seeds_vg_vanilla.json
-   └── seeds_vgcut_vanilla.json
+     ├── seeds_coco_multi_vanilla.json
+     ├── seeds_coco_multi_vanilla.json
+     ├── seeds_lvis_vanilla.json
+     ├── seeds_lvis_multi_vanilla.json
+     ├── seeds_vg_vanilla.json
+     └── seeds_vgcut_vanilla.json
 ```
 
-4) (Optional) If you want to make your own datasets, conduct the following steps:
+1) (Optional) If you want to make your own datasets, conduct the following steps:
 
 ```shell
 cd 1_AddSD
@@ -99,8 +99,8 @@ Make sure place the datasets, such as COCO, LVIS, VG, and VGCUT, in the data dir
      ├── lvis_remove_image/  ## lvis single object remove datasets
      ├── lvis_remove_image_multiobj/  ## lvis multiple objects remove datasets
      └── annotations/
-     	├── instances_train2017.json
-     	└── instances_val2017.json
+        ├── instances_train2017.json
+        └── instances_val2017.json
   ├── lvis/
      ├── lvis_v1_train.json
      └── lvis_v1_val.json
@@ -161,13 +161,13 @@ sh train.sh
 <p align="center">
   <img src="assets/visualization.svg" alt="visualization.svg" style="width: 100%;"/>
   <br>
-  <span style="display: block; text-align: center; font-size: 14px; color: #555;">Visualization on image editing</span>
+  <span style="display: block; text-align: center; font-size: 14px; color: #555;">Visualization on image editing.</span>
 </p>
 
 <p align="center">
   <img src="assets/visualization_instruction.svg" alt="visualization_instruction.svg" style="width: 100%;"/>
   <br>
-  <span style="display: block; text-align: center; font-size: 14px; color: #555;">Visualization under different instructions</span>
+  <span style="display: block; text-align: center; font-size: 14px; color: #555;">Visualization under different instructions.</span>
 </p>
 
 
