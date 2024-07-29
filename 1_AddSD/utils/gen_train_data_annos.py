@@ -276,6 +276,43 @@ def gen_annos_vg(root="data", strategy="vanilla"):
     return seeds_dict
 
 
+def gen_annos_refcoco(root="data", strategy="vanilla"):
+    seeds_dict = {}
+    for datasets_name in tqdm(os.listdir(os.path.join(root, "refcoco_remove")), ncols=100):
+        print(datasets_name)
+        for image_id in os.listdir(os.path.join(root, "refcoco_remove", datasets_name)):
+            seeds_dict[f"{datasets_name}_{image_id}"] = []
+
+            for fn in os.listdir(os.path.join(root, "refcoco_remove", datasets_name, image_id)):
+                if fn == "anno.png" or fn == "ori.png":
+                    continue
+                try:
+                    assert "inpainted" in fn
+                except:
+                    print(os.path.join(root, "refcoco_remove", datasets_name, image_id, fn))
+                labels = fn.split('.png')[0].split('_')[-1]
+                labels = labels.split(',')
+                label = random.choice(labels)
+
+                if strategy == "vanilla":
+                    edit = f"add a {label}"
+                elif strategy == "template":
+                    template = random.choice(prompt_edit_add)
+                    edit = template.replace("<obj>", label)
+                else:
+                    raise NotImplementedError
+                edit = edit.replace("  ", " ")
+                edit = edit.replace("a a ", "a ")
+                res = {"image_0_dir": os.path.join("refcoco_remove", datasets_name, image_id, fn),
+                       "image_1_dir": os.path.join("refcoco_remove", datasets_name, image_id, "ori.png"),
+                       "edit": edit}
+                # print(edit)
+                seeds_dict[f"{datasets_name}_{image_id}"].append(res)
+
+    save_annos('refcoco', seeds_dict, root, strategy)
+    return seeds_dict
+
+
 def gen_annos_lvis_by_images(root="data", strategy="vanilla"):
     seeds_dict = {}
     with open(f"{root}/json/lvis_remove/addsd_lvis_v1_train_with_remove_image_convs.json", 'r') as f:
@@ -490,5 +527,6 @@ if __name__ == "__main__":
     # gen_annos_coco_multi(root="data", strategy="vanilla")
     # gen_annos_lvis(root="data", strategy="vanilla")
     # gen_annos_lvis_multi(root="data", strategy="vanilla")
+    # gen_annos_refcoco(root="data", strategy="vanilla")
     # gen_annos_vg(root="data", strategy="vanilla")
     # gen_annos_vgcut(root="data", strategy="vanilla")
