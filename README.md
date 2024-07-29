@@ -142,6 +142,31 @@ cd 2_grounding_dino
 sh run_infer_with_GT_for_AddSD.sh
 ```
 
+Here are examples of generation on COCO and LVIS datasets.
+
+**COCO object generation**
+
+```shell
+python edit_cli_datasets.py --config configs/generate.yaml \
+-n $NNODES -nr $NODE_RANK --addr $ADDR --port $PORT --input $INPUT --output $OUTPUT --ckpt $MODEL --seed $SEED \
+```
+
+By default, use super-label-based sampling strategy to restrict the category of the added object. If do not use it, please add ```--no_superlabel``` parameter.
+
+By default, generate single object. If want to generate multiple objects, please add ```--multi``` parameter.
+
+**LVIS object generation**
+
+```shell
+python edit_cli_datasets.py --config configs/generate.yaml -n $NNODES -nr $NODE_RANK --addr $ADDR --port $PORT --input $INPUT --output $OUTPUT --ckpt $MODEL --seed $SEED \
+--is_lvis --lvis_label_selection r
+```
+
+Need to add ```--is_lvis``` parameter to generate on LVIS dataset.
+
+By default, add object with rare classes. If want to use common or frequent classes, please change ```--lvis_label_selection f c r``` parameter, where f, c, r represents frequent, common, rare class, respectively.
+
+
 ### Step 3: Train detectors with original data and synthetic data from Add-SD
 
 1) Follow the installation instructions in the [XPaste](https://github.com/yoctta/XPaste) repository.
