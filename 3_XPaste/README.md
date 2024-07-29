@@ -5,7 +5,7 @@ We follow [XPaste](https://github.com/yoctta/XPaste) for most of the experimenta
 
 ## Mehtod
 <p align="center">
-  <img src="../assets/compare_with_xpaste.svg" alt="compare_with_xpaste.svg" style="width: 100%;"/>
+  <img src="../assets/compare_with_xpaste.svg" alt="compare_with_xpaste.svg" style="width: 60%;"/>
   <br>
   <span style="display: block; text-align: center; font-size: 14px; color: #555;">Compare with X-Paste.</span>
 </p>
@@ -13,7 +13,7 @@ We follow [XPaste](https://github.com/yoctta/XPaste) for most of the experimenta
 ## Results
 
 #### Comparisons on LVIS.
-| Method        | AP$^{box}$ | AP$_r^{box}$ | AP$_c^{box}$ | AP$_f^{box}$ | AP$^{mask}$ | AP$_r^{mask}$ | AP$_c^{mask}$ | AP$_f^{mask}$ |
+| Method        | AP<sup>box</sup> | AP<sub>r</sub><sup>box</sup> | AP<sub>c</sub><sup>box</sup> | AP<sub>f</sub><sup>box</sup> | AP<sup>mask</sup> | AP<sub>r</sub><sup>mask</sup> | AP<sub>c</sub><sup>mask</sup> | AP<sub>f</sub><sup>mask</sup> |
 | ------------- | ---------- | ------------ | ------------ | ------------ | ----------- | ------------- | ------------- | ------------- |
 | Baseline      | 33.80      | 20.84        | 32.84        | 40.58        | 29.98       | 18.36         | 29.64         | **35.46**     |
 | Copy-Paste    | 34.31      | 21.19        | **34.32**    | 40.07        | 30.29       | 19.97         | 30.43         | 34.67         |
@@ -22,7 +22,7 @@ We follow [XPaste](https://github.com/yoctta/XPaste) for most of the experimenta
 
 #### Comparisons on COCO.
 
-| Method        | AP$^{box}$ | AP$^{mask}$ |
+| Method        | AP<sup>box</sup> | AP<sup>mask</sup> |
 | ------------- | ---------- | ----------- |
 | Baseline      | 46.00      | 39.80       |
 | Copy-Paste    | 46.40      | 39.80       |
