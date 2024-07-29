@@ -3,6 +3,8 @@
 This stage generates synthetic data for downstream data augmentation. Annotations are update with 
 [GroundingDINO](https://github.com/IDEA-Research/GroundingDINO).
 
+**Please refer to [1_AddSD](https://github.com/ylingfeng/Add-SD/tree/main/1_AddSD) for the generation process. This folder is for the postprocess of synthetic data.**
+
 ## Pipeline
 <p align="center">
   <img src="../assets/super-class.svg" alt="/super-class.svg" style="width: 100%;"/>
