@@ -1,6 +1,6 @@
 # Add-SD: Rational Generation without Manual Reference
 
-This is the *official* repository with PyTorch implementation of [Add-SD: Rational Generation without Manual Reference](https://arxiv.org/pdf/).
+This is the *official* repository with PyTorch implementation of [Add-SD: Rational Generation without Manual Reference](https://arxiv.org/pdf/2407.21016).
 
 ☀️ If you find this work useful for your research, please kindly star our repo and cite our paper! ☀️
 
